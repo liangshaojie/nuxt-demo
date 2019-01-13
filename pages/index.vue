@@ -3,18 +3,28 @@
     <div class="body">
       <Myheader></Myheader>
       <Carousel></Carousel>
+      <Classification :indexClass="allparentinfo.indexClass"></Classification>
     </div>
   </transition> 
 </template>
 
 <script>
 import Myheader from "~/components/home/Myheader.vue";
-import Carousel from '~/components/carousel/Carousel.vue'
+import Carousel from "~/components/carousel/Carousel.vue";
+import Classification from "~/components/home/Classification.vue";
+import axios from '~/plugins/axios'
 
 export default {
   components: {
     Myheader,
-    Carousel
+    Carousel,
+    Classification
+  },
+  async asyncData() {
+    let { data } = await axios.get("/api/");
+    return {
+      allparentinfo: data
+    };
   }
 };
 </script>
