@@ -4,6 +4,10 @@
       <Myheader></Myheader>
       <Carousel></Carousel>
       <Classification :indexClass="allparentinfo.indexClass"></Classification>
+      <RecommendedSchools></RecommendedSchools>
+      <Grabactivity></Grabactivity>
+      <Courseblock :allparentinfo="allparentinfo.allparentinfo"></Courseblock>
+      <Footertabs></Footertabs>
     </div>
   </transition> 
 </template>
@@ -12,20 +16,28 @@
 import Myheader from "~/components/home/Myheader.vue";
 import Carousel from "~/components/carousel/Carousel.vue";
 import Classification from "~/components/home/Classification.vue";
+import RecommendedSchools from '~/components/home/RecommendedSchools.vue'
+import Grabactivity from '~/components/home/Grabactivity.vue'
+import Courseblock from '~/components/home/Courseblock.vue'
+import Footertabs from '~/components/home/Footertabs.vue'
 import axios from '~/plugins/axios'
 
 export default {
   components: {
     Myheader,
     Carousel,
-    Classification
+    Classification,
+    RecommendedSchools,
+    Grabactivity,
+    Courseblock,
+    Footertabs
   },
   async asyncData() {
     let { data } = await axios.get("/api/");
     return {
       allparentinfo: data
     };
-  }
+  },
 };
 </script>
 
