@@ -5,6 +5,7 @@ const db = require('../../model/db.js')
  */
 exports.longin = (req, res, next) => {
     let params = req.body
+    console.log('::::::::::::::::::',params.phone)
     db.query(`select * from user u where u.phone = ${params.phone}`, (err, rows, fields) => {
         if (err) {
             throw err
